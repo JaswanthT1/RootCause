@@ -7,13 +7,16 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const [activeSection, setActiveSection] = useState("Overview");
 
   async function analyzeLogs() {
     setLoading(true);
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/analyze");
+      const response = await fetch(
+  `${import.meta.env.VITE_API_BASE_URL}/analyze`
+);
 
       if (!response.ok) {
         throw new Error("The server returned an error.");
@@ -45,9 +48,9 @@ async function uploadAndAnalyze() {
     const formData = new FormData();
     formData.append("file", selectedFile);
 
-    const response = await fetch(
-      "http://127.0.0.1:8000/analyze-upload",
-      {
+   const response = await fetch(
+  `${import.meta.env.VITE_API_BASE_URL}/analyze-upload`,
+  {
         method: "POST",
         body: formData,
       }
@@ -80,9 +83,38 @@ async function uploadAndAnalyze() {
         </div>
 
         <p className="nav-label">WORKSPACE</p>
-        <div className="nav-item active">◈ &nbsp; Overview</div>
-        <div className="nav-item">⌁ &nbsp; Log analysis</div>
-        <div className="nav-item">◎ &nbsp; Incidents</div>
+    
+<button
+  className={`nav-item ${activeSection === "Overview" ? "active" : ""}`}
+  onClick={() => {
+    setActiveSection("Overview");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }}
+>
+  ◈ &nbsp; Overview
+</button>
+
+<button
+  className={`nav-item ${activeSection === "Log analysis" ? "active" : ""}`}
+  onClick={() => {
+    setActiveSection("Log analysis");
+    document.querySelector(".welcome")?.scrollIntoView({ behavior: "smooth" });
+  }}
+>
+  ⌁ &nbsp; Log analysis
+</button>
+
+<button
+  className={`nav-item ${activeSection === "Incidents" ? "active" : ""}`}
+  onClick={() => {
+    setActiveSection("Incidents");
+    document.querySelector(".panel")?.scrollIntoView({ behavior: "smooth" });
+  }}
+>
+  ◎ &nbsp; Incidents
+</button>
+
+
 
         <div className="sidebar-bottom">
           <span className="status-dot" />
@@ -191,7 +223,7 @@ async function uploadAndAnalyze() {
             </p>
           </div>
         ) : (
-          
+
             <div className="incident-content">
               <p className="incident-id">{incident.incident_id}</p>
               <h2>{incident.probable_root_cause}</h2>

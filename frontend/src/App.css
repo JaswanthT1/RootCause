@@ -104,31 +104,37 @@ button {
   margin-bottom: 13px;
 }
 
+ 
 .nav-item {
-  padding: 13px 12px;
-  margin: 3px 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 18px 20px;
+  margin-bottom: 8px;
   border: 1px solid transparent;
-  border-radius: 8px;
-  color: #8da0aa;
-  font-size: 13px;
+  border-radius: 10px;
+  background: transparent;
+  color: #a7b6c2;
+  font-family: inherit;
+  font-size: 15px;
+  text-align: left;
   cursor: pointer;
-  transition: background 180ms ease, color 180ms ease,
-    border-color 180ms ease, transform 180ms ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .nav-item:hover {
-  color: var(--cyan);
-  background: #51f5e10c;
-  border-color: #51f5e126;
-  transform: translateX(3px);
+  color: #e8f4f5;
+  background: #101b20;
+  border-color: #20363a;
 }
 
 .nav-item.active {
-  color: var(--cyan);
-  background: linear-gradient(90deg, #51f5e114, transparent);
-  border-color: #51f5e125;
-  box-shadow: inset 2px 0 var(--cyan);
+  color: #42f5df;
+  background: #0c1b1e;
+  border-color: #1b4445;
+  box-shadow: inset 3px 0 0 #42f5df;
 }
+ 
 
 .sidebar-bottom {
   margin-top: auto;
