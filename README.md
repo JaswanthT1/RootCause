@@ -10,6 +10,29 @@ RootCause is a full-stack log analysis application that parses application logs,
 
 📖 **API Documentation:** [Explore the FastAPI Docs](https://rootcause-api-xjto.onrender.com/docs)
 
+## Screenshots
+
+### Dashboard
+
+![RootCause dashboard](screenshots/dashboard.png)
+
+### Sample Log Analysis
+
+![Sample log analysis results](screenshots/sample-analysis.png)
+
+### Uploaded Log Analysis
+
+![Uploaded log analysis results](screenshots/upload-results.png)
+
+### Incident Details
+
+![Detected incident details](screenshots/incident-details.png)
+
+### Recommended Actions
+
+![Incident investigation recommendations](screenshots/recommended-actions.png)
+
+
 ## Features
 
 * **Log Parsing:** Processes timestamped application log entries and identifies log levels.
